@@ -1,76 +1,120 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的第一个网站</title>
-
-    <!-- 简短描述，有利于 SEO 与分享卡片 -->
-    <meta name="description" content="个人主页 — 在这里展示我的项目、博客与作品集。">
-
-    <!-- 轻量 favicon，使用 data: URI 避免额外网络请求 -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23007ACC'/%3E%3Ctext x='50' y='60' font-size='50' text-anchor='middle' fill='white' font-family='Arial,sans-serif'%3EZ%3C/text%3E%3C/svg%3E">
-
-    <!-- 主题颜色（移动浏览器工具栏） -->
-    <meta name="theme-color" content="#007acc">
-
-    <!-- 结构化数据（简单的 Website/Person，有助于搜索引擎理解） -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "我的第一个网站",
-      "url": "https://zhu-liya.github.io/Profile"
-    }
-    </script>
-
-    <!-- 关键/首屏 CSS 内联（非常小的样式，内联能避免额外阻塞请求） -->
+    <title>Liya's Personal Blog</title>
     <style>
-        :root{--max-width:800px;--gap:20px;--accent:#007acc}
-        html,body{height:100%}
-        body {
-            font-family: Arial, sans-serif;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: var(--gap);
-            line-height:1.5;
-            color:#111;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-        }
-        header, main, footer{display:block}
-        .container{text-align:center}
-        h1{font-size:1.6rem;margin:0 0 .5rem}
-        p{margin:.4rem 0;color:#333}
-        /* 可访问性的跳过链接，仅在焦点时显示 */
-        .skip-link{
-            position:absolute;left:0;top:-40px;background:#000;color:#fff;padding:8px 12px;z-index:100;
-            transition:top .2s;
-        }
-        .skip-link:focus{top:10px}
-        /* 响应式：小屏时加大字体可读性 */
-        @media (max-width:480px){
-            body{padding:16px}
-            h1{font-size:1.25rem}
-        }
+        /* Overall blog style, simple and uncomplicated, compatible with mobile phones and computers */
+        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
+        body{background:#f8f9fa;color:#333;line-height:1.6;}
+        /* Top navigation bar */
+        .header{background:white;box-shadow:0 2px 10px rgba(0,0,0,0.1);padding:15px 0;}
+        .nav{width:90%;max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+        .blog-name{font-size:22px;font-weight:bold;color:#2c3e50;}
+        .blog-name a{text-decoration:none;color:#2c3e50;}
+        .nav-link{color:#666;text-decoration:none;margin-left:20px;}
+        .nav-link:hover{color:#3498db;}
+        /* Main content area */
+        .container{width:90%;max-width:1000px;margin:30px auto;display:flex;flex-wrap:wrap;}
+        /* Blog article list (main area) */
+        .article-list{flex:1;min-width:300px;margin-right:30px;}
+        .article-item{background:white;padding:25px;margin-bottom:25px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+        .article-title{font-size:20px;font-weight:bold;margin-bottom:10px;}
+        .article-title a{text-decoration:none;color:#2c3e50;}
+        .article-title a:hover{color:#3498db;}
+        .article-meta{color:#999;font-size:14px;margin-bottom:15px;}
+        .article-content{color:#666;line-height:1.8;margin-bottom:15px;}
+        .read-more{text-decoration:none;color:#3498db;font-weight:500;}
+        /* Sidebar (personal profile + categories) */
+        .sidebar{width:280px;flex-shrink:0;}
+        .sidebar-card{background:white;padding:20px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:25px;}
+        .avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 15px;object-fit:cover;}
+        .author-name{font-size:18px;font-weight:bold;text-align:center;margin-bottom:10px;}
+        .author-intro{color:#666;font-size:14px;text-align:center;line-height:1.6;}
+        .category-title{font-size:16px;font-weight:bold;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid #eee;}
+        .category-list{list-style:none;}
+        .category-item{margin-bottom:10px;}
+        .category-item a{text-decoration:none;color:#666;}
+        .category-item a:hover{color:#3498db;}
+        /* Footer copyright */
+        .footer{background:white;text-align:center;padding:20px;margin-top:50px;border-top:1px solid #eee;color:#999;font-size:14px;}
     </style>
 </head>
-<body>
-    <!-- 跳过链接提升键盘/屏幕阅读器可访问性 -->
-    <a class="skip-link" href="#main">跳到主要内容</a>
+<body><!-- Top Navigation -->
+    <div class="header">
+        <div class="nav">
+            <div class="blog-name"><a href="#">Liya's Blog</a></div>
+            <div>
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Categories</a>
+                <a href="#" class="nav-link">About Me</a>
+            </div>
+        </div>
+    </div>
 
-    <header class="container" role="banner" aria-label="站点头部">
-        <!-- 如果以后加入 logo，可直接放在这里（SVG inline 推荐） -->
-    </header>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Blog Article List -->
+        <div class="article-list">
+<!-- Article 1 -->
+            <div class="article-item">
+                <h2 class="article-title"><a href="#">First Blog: My Personal Website Construction Record</a></h2>
+                <div class="article-meta">Published: April 23, 2026 | Category: Website Construction</div>
+                <div class="article-content">
+                    Today I finally set up my personal blog, using a free domain name + free website hosting space, as well as the DNS service I applied for earlier, all done for free! I'd like to share the construction process, which is easy for beginners to follow. You don't need to understand complex code; just copy the template and modify it...
+                </div>
+                <a href="#" class="read-more">Read More →&lt;/a&gt;
+            &lt;/div&gt;
 
-    <main id="main" class="container" role="main" aria-labelledby="title">
-        <h1 id="title">🎉 恭喜！你的网站上线了！</h1>
-        <p>这是用 GitHub Pages 搭建的免费个人网站</p>
-        <p>以后可以在这里展示你的项目、博客和作品集</p>
-    </main>
+            <!-- Article 2 -->
+            <div class="article-item">
+                <h2 class="article-title"><a href="#">Sharing Several Free and Useful Website Building Tools</a></h2>
+                <div class="article-meta">Published: April 22, 2026 | Category: Tool Sharing</div>
+                <div class="article-content">
+                    During the process of building my personal blog, I found several free and useful tools to recommend to beginners like me: Vercel (free website hosting), is-a.dev (free domain name), and the applied DNS service. Together, they are fully sufficient, allowing you to have your own independent blog without spending a penny...
+                </div>
+                <a href="#" class="read-more">Read More →&lt;/a&gt;
+            &lt;/div&gt;
 
-    <footer class="container" role="contentinfo" aria-label="页脚">
-        <p style="font-size:0.9rem;color:#666;margin-top:1.2rem">© 2026 zhu-liya</p>
-    </footer>
+            <!-- Article 3 (You can add more) -->
+            <div class="article-item">
+                <h2 class="article-title"><a href="#">My Daily Sharing: About Passion and Growth</a></h2>
+                <div class="article-meta">Published: April 21, 2026 | Category: Daily Essays</div>
+                <div class="article-content">
+                    Recently, I have been studying website construction and basic HTML. From knowing nothing to being able to modify templates and upload websites by myself, although the process is a bit slow, every step is very rewarding. Share a favorite quote: Take your time; no one grows up overnight...
+                </div>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+       <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Personal Profile -->
+            <div class="sidebar-card">
+                <img src="Your Avatar Image URL" class="avatar">
+                <div class="author-name">Liya</div>
+                <div class="author-intro">
+                    An ordinary person who loves life and likes to explore. I share website construction, daily essays, and tool recommendations to record every step of my growth.
+                </div&gt;
+            &lt;/div&gt;
+
+            <!-- Blog Categories -->
+            <div class="sidebar-card">
+                <div class="category-title">Blog Categories</div>
+                <ul class="category-list">
+                    <li class="category-item"><a href="#">Website Construction (2 Articles)</a></li>
+                    <li class="category-item"><a href="#">Tool Sharing (1 Article)</a></li>
+                    <li class="category-item"><a href="#">Daily Essays (1 Article)</a></li>
+                    <li class="category-item"><a href="#">Learning Records (0 Articles)</a></li>
+                </ul>
+            </div>
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    <!-- Footer Copyright -->
+    <div class="footer">
+        <p>© 2026 Liya's Personal Blog | Domain: yourname.is-a.dev | Supported by Exclusive DNS Resolution</p>
+    </div>
 </body>
 </html>
